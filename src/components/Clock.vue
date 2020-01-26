@@ -76,8 +76,6 @@ export default class Clock extends Vue {
   get hour() {
     return this.moment.get(TimeUnit.HOUR);
   }
-
-  currentRate: number = 0.5;
 }
 </script>
 
