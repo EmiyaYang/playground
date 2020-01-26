@@ -4,20 +4,20 @@
     class="outer"
     :value="secondRate"
     :color="color"
-    layer-color="#64656610"
+    :layer-color="layerColor"
     :speed="100"
   >
     <van-circle
       key="minute"
       class="middle"
-      layer-color="#64656610"
+      :layer-color="layerColor"
       :color="color"
       :value="minuteRate"
       :speed="100"
     >
       <van-circle
         class="inner"
-        layer-color="#64656610"
+        :layer-color="layerColor"
         :color="color"
         :value="hourRate"
         :speed="100"
@@ -42,6 +42,8 @@ export default class Clock extends Vue {
     "0%": "#2C3E50",
     "100%": "#007EA7"
   };
+
+  layerColor = "#f5f5f5";
 
   get text() {
     const date = this.moment.format().split(" ")[0];

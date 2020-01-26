@@ -45,7 +45,11 @@ export class YMoment {
   }
 
   get(type: TimeUnit) {
-    return this.timeMap[type] && this.timeMap[type].value;
+    let value = this.timeMap[type] && this.timeMap[type].value;
+
+    if (type === TimeUnit.DAY) value++;
+
+    return value;
   }
 
   getDayOfWeek() {
@@ -54,14 +58,16 @@ export class YMoment {
 
   // 输出示例: A070017 07:24:10
   format() {
-    const month = MonthSymbol[this.timeMap.month.value];
-    const day = zeroPadding(this.timeMap.day.value);
-    const year = zeroPadding(this.timeMap.year.value, 4);
-    const hour = zeroPadding(this.timeMap.hour.value);
-    const minute = zeroPadding(this.timeMap.minute.value);
-    const second = zeroPadding(this.timeMap.second.value);
+    // const month = MonthSymbol[this.timeMap.month.value];
+    // const day = zeroPadding(this.timeMap.day.value);
+    // const year = zeroPadding(this.timeMap.year.value, 4);
+    // const hour = zeroPadding(this.timeMap.hour.value);
+    // const minute = zeroPadding(this.timeMap.minute.value);
+    // const second = zeroPadding(this.timeMap.second.value);
 
-    return `${month}${day}${year} ${hour}:${minute}:${second}`;
+    // return `${month}${day}${year} ${hour}:${minute}:${second}`;
+
+    return format(this.timestamp);
   }
 
   valueOf() {

@@ -4,7 +4,9 @@
 
     <section class="app-body">
       <Clock :moment="moment" class="app-body__clock" :text="showTime"> </Clock>
-      <!-- <section>{{ showTime }}</section> -->
+
+      <Converter :init="moment" />
+
       <van-grid class="calendar" :column-num="4">
         <van-grid-item
           v-for="value in 17"
@@ -27,10 +29,12 @@
 import { Component, Vue } from "vue-property-decorator";
 import { YMoment, TimeUnit } from "./utils";
 import Clock from "@/components/Clock.vue";
+import Converter from "@/components/Converter.vue";
 
 @Component({
   components: {
-    Clock
+    Clock,
+    Converter
   }
 })
 export default class App extends Vue {
@@ -75,18 +79,18 @@ html {
   text-align: center;
   color: #2c3e50;
 
-  &-header {
-    // padding: 10px 10px 0 10px;
-    height: 8vh;
-    font-size: 1.5em;
-    text-align: left;
-  }
+  // &-header {
+  //   // padding: 10px 10px 0 10px;
+  //   height: 8vh;
+  //   font-size: 1.5em;
+  //   text-align: left;
+  // }
 
   &-body {
-    height: 82vh;
+    height: 90vh;
 
     &__clock {
-      margin-bottom: 8vh;
+      margin: 20px;
     }
   }
 

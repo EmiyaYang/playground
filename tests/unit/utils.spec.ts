@@ -43,7 +43,7 @@ describe("YMoment", () => {
 
     value = Math.floor(ts / 1000 / 60 / 28 / 12);
     value %= 17;
-    expect(moment.get(TimeUnit.DAY)).toEqual(value);
+    expect(moment.get(TimeUnit.DAY) - 1).toEqual(value);
 
     value = Math.floor(ts / 1000 / 60 / 28 / 12 / 17);
     value %= 7;
