@@ -1,5 +1,5 @@
 // 纪元开始时间戳
-export const START_TIMESTAMP = 1579536000000;
+export const START_TIMESTAMP = 1579478400000;
 
 export enum MonthSymbol {
   E = 0,

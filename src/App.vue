@@ -1,11 +1,10 @@
 <template>
   <div id="app" class="app">
-    <section class="app-header">冕历</section>
+    <section class="app-header"></section>
 
     <section class="app-body">
-      <Clock class="app-body__clock" :text="showTime">
-        <!-- <section>{{ showTime }}</section> -->
-      </Clock>
+      <Clock :moment="moment" class="app-body__clock" :text="showTime"> </Clock>
+      <!-- <section>{{ showTime }}</section> -->
       <van-grid class="calendar" :column-num="4">
         <van-grid-item
           v-for="value in 17"
@@ -38,6 +37,7 @@ export default class App extends Vue {
   showTime: String = "";
   currentDay: Number = 0;
   timer: number = 0;
+  moment: YMoment = new YMoment();
 
   created() {
     this.timer = setInterval(() => {
@@ -46,6 +46,8 @@ export default class App extends Vue {
       this.showTime = moment.format();
 
       this.currentDay = moment.get(TimeUnit.DAY);
+
+      this.moment = moment;
     }, 1000);
   }
 
@@ -68,16 +70,17 @@ export default class App extends Vue {
   color: #2c3e50;
 
   &-header {
-    padding-top: 10px;
-    height: 10vh;
-    font-size: 2em;
+    // padding: 10px 10px 0 10px;
+    height: 8vh;
+    font-size: 1.5em;
+    text-align: left;
   }
 
   &-body {
-    height: 80vh;
+    height: 82vh;
 
     &__clock {
-      margin-bottom: 10px;
+      margin-bottom: 8vh;
     }
   }
 
