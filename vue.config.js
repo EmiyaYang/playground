@@ -1,3 +1,3 @@
 module.exports = {
-  publicPath: process.env.NODE_ENV === "production" ? "/playground/dist" : "/"
+  publicPath: process.env.NODE_ENV === "production" ? "/playground/dist/" : "/"
 };
