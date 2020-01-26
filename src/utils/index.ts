@@ -35,7 +35,11 @@ export class YMoment {
     [key in TimeUnit]: { value: number; preDigit: number; nextDigit: number };
   };
 
-  constructor(timestamp: number) {
+  constructor(timestamp?: number) {
+    if (timestamp == undefined) {
+      timestamp = Date.now();
+    }
+
     this.timestamp = timestamp;
     this.timeMap = serialize(this.timestamp);
   }
@@ -117,6 +121,8 @@ export function parse(str: string): number {
         value = Number(char);
       }
 
+      value = value || 0;
+
       return acc + getValue(value, current);
     }, 0) + START_TIMESTAMP
   );
@@ -170,4 +176,12 @@ export function zeroPadding(value: number | string, digit: number = 2): string {
   while (res.length < digit) res = "0" + res;
 
   return res;
+}
+
+/**
+ * 1. 准备一个 4 * 7 的数组
+ * 2. 获取首月首日的星期数记为起始点, 依次填入
+ */
+export function getMonthArr(year: number, month: number) {
+  const arr = [];
 }
