@@ -58,6 +58,12 @@ export default class App extends Vue {
 </script>
 
 <style lang="scss">
+body,
+html {
+  // 微信浏览器安卓手机默认不显示白色背景色
+  background: #ffffff;
+}
+
 * {
   box-sizing: border-box;
 }
