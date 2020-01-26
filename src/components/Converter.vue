@@ -4,6 +4,8 @@
       <van-datetime-picker
         class="picker"
         v-model="currentDate"
+        :min-date="minDate"
+        :max-date="maxDate"
         @cancel="handleCancel"
         @confirm="handleConfirm"
         type="datetime"
@@ -15,7 +17,7 @@
         label="公历"
         @click="commonDatePickerVisible = true"
       />
-      <van-field v-model="yDate" label="冕历" readonly />
+      <van-field v-model="yDate" :label="appTitle" readonly />
       <van-icon class="converter-main__icon" name="exchange" />
     </van-cell-group>
   </section>
@@ -24,7 +26,7 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import moment from "moment";
-import { format, YMoment } from "../utils";
+import { format, YMoment, appTitle, START_TIMESTAMP } from "../utils";
 
 @Component
 export default class Converter extends Vue {
@@ -37,6 +39,18 @@ export default class Converter extends Vue {
   commonDate = "";
 
   yDate = "";
+
+  get minDate() {
+    return new Date(START_TIMESTAMP);
+  }
+
+  get maxDate() {
+    return new Date("2100-10-10");
+  }
+
+  get appTitle() {
+    return appTitle;
+  }
 
   handleCancel() {
     this.commonDatePickerVisible = false;

@@ -21,13 +21,15 @@
       </van-grid>
     </section>
 
-    <van-divider class="app-footer">一路前行, 冕历勉励🍐</van-divider>
+    <van-divider class="app-footer"
+      >一路前行, 「{{ appTitle }}」勉励🍐</van-divider
+    >
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import { YMoment, TimeUnit } from "./utils";
+import { YMoment, TimeUnit, appTitle } from "./utils";
 import Clock from "@/components/Clock.vue";
 import Converter from "@/components/Converter.vue";
 
@@ -43,7 +45,13 @@ export default class App extends Vue {
   timer: number = 0;
   moment: YMoment = new YMoment();
 
+  get appTitle() {
+    return appTitle;
+  }
+
   created() {
+    document.title = appTitle;
+
     this.timer = setInterval(() => {
       const moment = new YMoment();
 
