@@ -1,5 +1,5 @@
 // 纪元开始时间戳
-export const START_TIMESTAMP = 1579449600000;
+export const START_TIMESTAMP = 1590076800000;
 
 export const appTitle = "勉历";
 
@@ -10,7 +10,7 @@ export enum MonthSymbol {
   A,
   X,
   Y,
-  Z
+  Z,
 }
 
 export enum TimeUnit {
@@ -19,7 +19,7 @@ export enum TimeUnit {
   HOUR = "hour",
   DAY = "day",
   MONTH = "month",
-  YEAR = "year"
+  YEAR = "year",
 }
 
 const DigitArr = [
@@ -28,7 +28,7 @@ const DigitArr = [
   { unit: TimeUnit.HOUR, preDigit: 28 },
   { unit: TimeUnit.DAY, preDigit: 12 },
   { unit: TimeUnit.MONTH, preDigit: 17 },
-  { unit: TimeUnit.YEAR, preDigit: 7 }
+  { unit: TimeUnit.YEAR, preDigit: 7 },
 ];
 
 export class YMoment {
@@ -83,7 +83,7 @@ export class YMoment {
 export function getValue(value: number, unit: TimeUnit) {
   if (value === 0) return value;
 
-  let index = DigitArr.findIndex(value => value.unit === unit);
+  let index = DigitArr.findIndex((value) => value.unit === unit);
 
   if (index < 0 || value < 0) throw new TypeError();
 
@@ -112,7 +112,7 @@ export function parse(str: string): number {
     TimeUnit.YEAR,
     TimeUnit.HOUR,
     TimeUnit.MINUTE,
-    TimeUnit.SECOND
+    TimeUnit.SECOND,
   ];
   const reg = /(\w)(\d{2})(\d{4})\s(\d{2}):(\d{2}):(\d{2})/;
 
@@ -169,7 +169,7 @@ function serialize(timestamp: number) {
     acc[unit] = {
       value: resValue,
       preDigit,
-      nextDigit
+      nextDigit,
     };
 
     return acc;
